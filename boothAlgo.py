@@ -1,5 +1,4 @@
 #Program to implement Booth's Algorithm for Multiplication
-#Author - Navendra Jha
 
 # Function to Convert integer values (decimal number) to their binary representation
 # Parameter : n = A decimal number in integer format
@@ -14,7 +13,7 @@ def convert_to_integer(b):
 z = 8
 
 #Function to Bitflip the binary number
-#Paramete : a = A decimal number which is first converted to binary number and then bit flipped.
+#Paramete : a = A decimal number which is then first converted to binary number and then bit flipped.
 def bit_flip(a):
     a = convert_to_binary(a)
     b = ""
@@ -59,7 +58,7 @@ def right_shift(A):
 def multiply(a,b):
     A = convert_to_binary(0)
     B = ""
-    q=""
+    q = ""
     B_Comp = ""
 
     if(a < 0):  #For Negative Number
@@ -93,7 +92,7 @@ def multiply(a,b):
 
         #For the cases where q0 and q-1 are both 0 or 1
         if ((q0 == '0') and (q1 == '0')) or ((q0 == '1') and (q1 == '1')):
-            print("Opcode = " , q0+q1, " So, The operation followed is RSA")
+            print("Opcode = " , q0+q1, " So, The operation followed is RS")
             c = A + q + q1
             c = right_shift(c)
             c = A[0] + c
@@ -104,7 +103,7 @@ def multiply(a,b):
 
         #For the cases where q0 is 0 and q-1 is 1
         elif (q0 == '0') and (q1 == '1'):
-            print("Opcode = " , q0+q1, " So, The operation followed is Add + RSA")
+            print("Opcode = " , q0+q1, " So, The operation followed is Add + RS")
             A = add_binary(A, B, 8)
             A = A[-8:]
             c = A + q + q1
@@ -117,7 +116,7 @@ def multiply(a,b):
 
         #For the cases where q0 is 1 and q-1 is 0
         elif (q0 == '1') and (q1 == '0'):
-            print("Opcode = " , q0+q1, "So, The operation followed is Subtract + RSA")
+            print("Opcode = " , q0+q1, "So, The operation followed is Subtract + RS")
             A = add_binary(A, B_Comp, 8)
             A = A[-8:]
             c = A + q + q1
@@ -162,14 +161,14 @@ def boothMultiplication(a,b):
 def main():
     print("************** Binary Multiplication using Booth's Algorithm")
     is_binary = False
-    print("Is input a binary number? Y/N")
-    s =str(input())
-    if(s == "Y"):
+    s = input("Is input a binary number? Y/N: ")
+    print(s)
+    if(s == "Y" or s == "y"):
         is_binary = True
-    elif s != "N":
+    elif s != "N" and s != "n":
         print("Bad Input.. Re-Enter the choice")
         exit()
-    print("Enter the number for the first variable = ")
+    print("Enter the  1st number = ")
 
 
     a = ""
@@ -190,7 +189,7 @@ def main():
         s = int(input())
         a = s
 
-    print("Enter the number for the second variable = ")
+    print("Enter the 2nd number = ")
     if (is_binary):
         t = str(input())
         inp = ""
@@ -210,9 +209,7 @@ def main():
     print("The Result with calculation is as follows : ")
     boothMultiplication(a,b)
 
-
-if __name__ == "__main__":
-   main()
+main()
 
 
 
